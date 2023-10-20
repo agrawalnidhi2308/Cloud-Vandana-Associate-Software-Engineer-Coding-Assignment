@@ -1,0 +1,38 @@
+package pack1;
+
+import java.util.Scanner;
+
+public class C{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine().toLowerCase();
+        scanner.close();
+
+        if (isPangram(input)) {
+            System.out.println("It's a pangram!");
+        } else {
+            System.out.println("It's not a pangram.");
+        }
+    }
+
+    public static boolean isPangram(String input) {
+        boolean[] b = new boolean[26];
+        
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (c >= 'a' && c <= 'z') {
+                int index = c - 'a';
+                b[index] = true;
+            }
+        }
+        for (boolean present : b) {
+            if (!present) {
+                return false; 
+            }
+        }
+
+        return true; 
+    }
+}
+
